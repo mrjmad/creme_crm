@@ -583,7 +583,10 @@ CREME_OPT_CSS = [  # APPS
     ('creme.commercial',       'commercial/css/commercial.css'),
     ('creme.crudity',          'crudity/css/crudity.css'),
     ('creme.emails',           'emails/css/emails.css'),
+
+    ('creme.geolocation',      'geolocation/css/leaflet-1.6.0.css'),
     ('creme.geolocation',      'geolocation/css/geolocation.css'),
+
     ('creme.polls',            'polls/css/polls.css'),
     ('creme.products',         'products/css/products.css'),
     ('creme.projects',         'projects/css/projects.css'),
@@ -754,6 +757,7 @@ CREME_CORE_JS = [
 
 CREME_OPTLIB_JS = [
     ('creme.activities', 'activities/js/jquery/extensions/fullcalendar-3.10.0.js'),
+    ('creme.geolocation', 'geolocation/js/lib/leaflet-1.6.0.js'),
 ]
 
 CREME_OPT_JS = [  # OPTIONAL APPS
@@ -784,6 +788,7 @@ CREME_OPT_JS = [  # OPTIONAL APPS
 
     ('creme.geolocation',   'geolocation/js/geolocation.js'),
     ('creme.geolocation',   'geolocation/js/geolocation-google.js'),
+    ('creme.geolocation',   'geolocation/js/geolocation-leaflet.js'),
     ('creme.geolocation',   'geolocation/js/brick.js'),
 ]
 

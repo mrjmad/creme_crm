@@ -1,0 +1,17 @@
+{% extends 'geolocation/bricks/google/filtered-map.html' %}
+{% load i18n creme_core_tags creme_bricks %}
+
+{% block brick_extra_class %}geolocation-brick geolocation-leaflet-filtered-brick{% endblock %}
+
+{% block brick_script %}
+    <script type="text/javascript">
+         $('.brick[id="{{brick_id}}"]').on('brick-ready', function(event, brick) {
+             new creme.geolocation.AddressesBrick(brick, {
+                 mapController: new creme.geolocation.LeafletMapController(),
+                 addressesUrl: '{% url 'geolocation__addresses' %}'
+             });
+         });
+    </script>
+{% endblock %}
+
+{% block brick_geomap_error %}{% endblock %}
