@@ -82,6 +82,7 @@ creme.utils.loading = function(div_id, is_loaded, params) {
     overlay.update(visible, null, visible ? 100 : 0);
 };
 
+/*
 creme.utils.confirmSubmit = function(atag, msg) {
     creme.dialogs.confirm(msg || gettext('Are you sure ?'))
                  .onOk(function() {
@@ -89,6 +90,7 @@ creme.utils.confirmSubmit = function(atag, msg) {
                   })
                  .open();
 };
+*/
 
 creme.utils.scrollTo = function(element) {
     if (Object.isNone(element) === false) {

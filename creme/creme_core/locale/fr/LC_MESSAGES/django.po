@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Creme Creme-Core 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-03 11:15+0200\n"
+"POT-Creation-Date: 2020-06-10 17:17+0200\n"
 "Last-Translator: Hybird <contact@hybird.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -37,6 +37,7 @@ msgstr "Modifier"
 #: actions.py:48 templates/creme_core/bricks/base/hat-card.html:108
 #: templates/creme_core/bricks/generic/hat-bar.html:47
 #: templates/creme_core/generics/blockform/delete-popup.html:4
+#: templates/creme_core/view_property_type.html:37
 #: templatetags/creme_bricks.py:130
 msgid "Delete"
 msgstr "Supprimer"
@@ -182,14 +183,14 @@ msgstr "Extension XLSX introduite par Microsoft Excel 2007."
 msgid "Properties"
 msgstr "Propriétés"
 
-#: bricks.py:69 core/entity_cell.py:614 forms/base.py:428 forms/relation.py:37
-#: gui/bricks.py:440 models/relation.py:421
+#: bricks.py:69 core/entity_cell.py:609 forms/base.py:428 forms/relation.py:37
+#: gui/bricks.py:451 models/relation.py:421
 #: templates/creme_core/bricks/relations.html:7
 #: templates/creme_core/forms/widgets/entity-cells/relationships.html:3
 msgid "Relationships"
 msgstr "Relations"
 
-#: bricks.py:149 core/entity_cell.py:410 forms/bulk.py:141
+#: bricks.py:149 core/entity_cell.py:405 forms/bulk.py:141
 #: models/custom_field.py:103 templates/creme_core/bricks/custom-fields.html:12
 #: templates/creme_core/forms/widgets/entity-cells/custom-fields.html:3
 msgid "Custom fields"
@@ -321,7 +322,7 @@ msgstr "Vider «{model}» - «{field}»"
 msgid "In «{model} - {field}», replace by a fallback value"
 msgstr "Dans «{model} - {field}», remplacer par une valeur de secours"
 
-#: core/entity_cell.py:256 core/entity_cell.py:265 forms/batch_process.py:191
+#: core/entity_cell.py:251 core/entity_cell.py:260 forms/batch_process.py:191
 #: templates/creme_core/bricks/jobs-all.html:27
 #: templates/creme_core/bricks/jobs-mine.html:14
 #: templates/creme_core/bricks/trash.html:19
@@ -330,20 +331,20 @@ msgstr "Dans «{model} - {field}», remplacer par une valeur de secours"
 msgid "Actions"
 msgstr "Actions"
 
-#: core/entity_cell.py:315 templates/creme_core/bricks/base/hat-card.html:58
+#: core/entity_cell.py:310 templates/creme_core/bricks/base/hat-card.html:58
 #: templates/creme_core/forms/widgets/entity-cells/widget.html:7
 msgid "Fields"
 msgstr "Champs"
 
-#: core/entity_cell.py:329
+#: core/entity_cell.py:324
 msgid "{} [hidden]"
 msgstr "{} [caché]"
 
-#: core/entity_cell.py:460
+#: core/entity_cell.py:455
 msgid "{} [deleted]"
 msgstr "{} [supprimé]"
 
-#: core/entity_cell.py:555
+#: core/entity_cell.py:550
 #: templates/creme_core/forms/widgets/entity-cells/function-fields.html:3
 msgid "Computed fields"
 msgstr "Champs calculés"
@@ -1078,7 +1079,7 @@ msgstr "Un filtre privé doit vous être attribué (ou à une des vos équipes).
 msgid "Conditions"
 msgstr "Conditions"
 
-#: forms/entity_filter/forms.py:55 forms/header_filter.py:777
+#: forms/entity_filter/forms.py:55 forms/header_filter.py:778
 msgid "All users"
 msgstr "Tous les utilisateurs"
 
@@ -1222,36 +1223,36 @@ msgid "Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 "Sélectionnez un choix valide. Ce choix n'est pas un des choix disponibles."
 
-#: forms/header_filter.py:268
+#: forms/header_filter.py:269
 #, python-format
 msgid "This value is invalid: %(value)s"
 msgstr "Cette valeur est invalide : %(value)s"
 
-#: forms/header_filter.py:439
+#: forms/header_filter.py:440
 #, python-format
 msgid "This type of relationship is not compatible with «%(model)s»."
 msgstr "Ce type de relation n'est pas compatible avec «%(model)s»."
 
-#: forms/header_filter.py:757
+#: forms/header_filter.py:758
 msgid "A private view of list must be assigned to a user/team."
 msgstr "Une vue de liste privée doit être attribuée à un utilisateur/équipe."
 
-#: forms/header_filter.py:758
+#: forms/header_filter.py:759
 msgid "A private view of list must belong to you (or one of your teams)."
 msgstr ""
 "Une vue de liste privée doit vous être attribuée (ou à une des vos équipe)."
 
-#: forms/header_filter.py:761 forms/header_filter.py:773
+#: forms/header_filter.py:762 forms/header_filter.py:774
 msgid "Columns"
 msgstr "Colonnes"
 
-#: forms/header_filter.py:766
+#: forms/header_filter.py:767
 msgid "All users can see the view, but only the owner can edit or delete it"
 msgstr ""
 "Cette vue sera visible par tous les utilisateurs, mais seul le propriétaire "
 "pourra la modifier ou la supprimer"
 
-#: forms/header_filter.py:768
+#: forms/header_filter.py:769
 msgid ""
 "A private view of list can only be used by its owner (or the teammates if "
 "the owner is a team)"
@@ -1652,29 +1653,29 @@ msgstr "{dateperiod_value}{dateperiod_type}"
 msgid "* no property *"
 msgstr "* pas de propriété *"
 
-#: gui/bricks.py:402
+#: gui/bricks.py:413
 msgid "Information on the entity (generic)"
 msgstr "Information sur la fiche (générique)"
 
-#: gui/bricks.py:425
+#: gui/bricks.py:436
 #, python-brace-format
 msgid "Information «{model}»"
 msgstr "Informations «{model}»"
 
-#: gui/bricks.py:451
+#: gui/bricks.py:462
 #, python-brace-format
 msgid "Relationship block: «{predicate}»"
 msgstr "Bloc de relation: «{predicate}»"
 
-#: gui/bricks.py:803
+#: gui/bricks.py:814
 msgid "Unknown type of block (bad uninstall ?)"
 msgstr "Type de bloc inconnu (mauvaise désinstallation ?)"
 
-#: gui/bricks.py:930
+#: gui/bricks.py:941
 msgid "Information on the entity"
 msgstr "Informations sur la fiche"
 
-#: gui/bricks.py:949
+#: gui/bricks.py:960
 msgid "Title bar"
 msgstr "Barre de titre"
 
@@ -3691,6 +3692,10 @@ msgstr "Aller à la configuration des types"
 #: templates/creme_core/view_property_type.html:26
 msgid "Property type"
 msgstr "Type de propriété"
+
+#: templates/creme_core/view_property_type.html:37
+msgid "Are you sure ?"
+msgstr "Êtes-vous sûr ?"
 
 #: templatetags/creme_bricks.py:361
 msgid "Collapse block"

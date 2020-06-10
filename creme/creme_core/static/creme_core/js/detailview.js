@@ -63,7 +63,7 @@
     creme.views.HatMenuBar = creme.widget.declare('ui-creme-hatmenubar', {
         _create: function(element, options, cb, sync, args) {
             var builder = this._builder = new creme.action.DefaultActionBuilderRegistry();
-            var buttons = $('.menu_button[data-action]', element);
+            var buttons = $('[data-action]', element);
 
             $(element).trigger('hatmenubar-setup-actions', [builder]);
 
@@ -83,6 +83,12 @@
     });
 
     var menuBarActions = {
+        'creme_core-hatmenubar-delete': function(url, options, data) {
+            return this._postQueryAction(url, options).onDone(function() {
+                creme.utils.goTo(data.redirect);
+            });
+        },
+
         'creme_core-hatmenubar-addrelationships': function(url, options, data) {
             var action = new creme.relations.AddRelationToAction({
                 subject_id: data.subject_id,

@@ -23,7 +23,8 @@ QUnit.module("creme.detailview.hatmenubar", new QUnitMixin(QUnitEventMixin,
         });
 
         this.setMockBackendPOST({
-            'mock/relation/add': backend.response(200, '')
+            'mock/relation/add': backend.response(200, ''),
+            'mock/delete': backend.response(200, '')
         });
 
         $('body').attr('data-save-relations-url', 'mock/relation/add');
@@ -101,6 +102,43 @@ QUnit.test('creme.detailview.hatmenubar (addrelationships)', function(assert) {
         ['mock/relation/selector', 'GET', {subject_id: '74', rtype_id: 'rtypes.1', selection: 'multiple'}],
         ['mock/relation/add', 'POST', {entities: ['2', '3'], predicate_id: 'rtypes.1', subject_id: '74'}]
     ], this.mockBackendUrlCalls());
+});
+
+QUnit.test('creme.detailview.hatmenubar (delete)', function(assert) {
+    var widget = this.createHatMenuBar({
+        buttons: [
+            this.createHatMenuActionButton({
+                url: '/mock/delete',
+                action: 'creme_core-hatmenubar-delete',
+                options: {
+                    confirm: 'Are you sure ?'
+                },
+                data: {
+                    redirect: '/mock/delete/redirect'
+                }
+            })
+        ]
+    });
+
+    this.assertActive(widget.element);
+    this.assertReady(widget.element);
+
+    deepEqual(1, widget.delegate._actionlinks.length);
+
+    var link = widget.delegate._actionlinks[0];
+
+    equal(true, link.isBound());
+    equal(false, link.isDisabled());
+
+    $(widget.element).find('a.menu_button').click();
+
+    this.assertOpenedDialog();
+    deepEqual([], this.mockBackendUrlCalls('mock/delete'));
+    deepEqual([], this.mockRedirectCalls());
+
+    this.acceptConfirmDialog();
+    deepEqual([['POST', {}]], this.mockBackendUrlCalls('mock/delete'));
+    deepEqual(['/mock/delete/redirect'], this.mockRedirectCalls());
 });
 
 }(jQuery));
