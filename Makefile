@@ -66,13 +66,22 @@ serve: media
 ## Run the Javascript linters
 .PHONY: eslint
 eslint:
-	git diff --name-only origin/master creme/ | { grep '.js$$' || true; } | xargs --no-run-if-empty \
+	git diff --name-only origin/master creme/ | { grep -E '.(js|html)$$' || true; } | xargs --no-run-if-empty \
 		node_modules/.bin/eslint \
 			--config .eslintrc \
 			--ignore-path .eslintignore \
 			--format stylish \
 			--quiet
 
+## Run the Javascript linters
+.PHONY: eslint-all
+eslint-all:
+	find creme/ -iname *.html -o -iname *.js | xargs --no-run-if-empty \
+		node_modules/.bin/eslint \
+			--config .eslintrc \
+			--ignore-path .eslintignore \
+			--format stylish \
+			--quiet
 
 ## Validates the Python imports with isort
 .PHONY: isort-check

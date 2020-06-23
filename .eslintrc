@@ -9,7 +9,8 @@
   },
 
   "plugins": [
-    "standard"
+    "standard",
+    "template"
   ],
 
   "globals": {
