@@ -4,36 +4,56 @@ MAKE_NPROCS ?= $(shell nproc)
 CREME_LANGUAGE ?= fr
 
 
+## clean - Basic cleanup, mostly temporary files.
+.PHONY: clean
+clean:
+	find . -name '*.pyc' -delete
+	find . -name '*.pyo' -delete
+	find . -name '__pycache__' -delete
+	rm -rf *.egg
+	rm -rf *.egg-info
+	rm -rf ./build
+	rm -rf ./package
+	rm -rf ./dist
+	rm -rf ./package
+	rm -rf ./.coverage
+	rm -rf ./htmlcov
+	rm -rf ./.pytest_cache
+	rm -rf ./.hypothesis
+	rm -rf ./artifacts
+	find . -type d -empty -print -delete
+
+
 ## Upgrade the Python requirements
 .PHONY: update-requirements
 update-requirements:
-	pip install --upgrade -r creme/requirements-dev.txt
+	pip install --upgrade -e .[dev]
 
 
 ## Upgrade the Python requirements, run the migrations, the creme_populate and generatemedia commands
 .PHONY: update
 update: update-requirements
-	python manage.py migrate
-	python manage.py creme_populate
-	python manage.py generatemedia
+	python creme/manage.py migrate
+	python creme/manage.py creme_populate
+	python creme/manage.py generatemedia
 
 
 ## Generate the media files
 .PHONY: media
 media:
-	python manage.py generatemedia
+	python creme/manage.py generatemedia
 
 
 ## Run the Django test suite
 .PHONY: test
 test:
-	python manage.py test --noinput --parallel=${MAKE_NPROCS} $(filter-out $@,$(MAKECMDGOALS))
+	python creme/manage.py test --noinput --parallel=${MAKE_NPROCS} $(filter-out $@,$(MAKECMDGOALS))
 
 
 ## Run the Django test suite and generate coverage reports
 .PHONY: test-cov
 test-cov:
-	COVERAGE_PROCESS_START=setup.cfg coverage run --source creme/ manage.py test --noinput --keep-db --parallel=${MAKE_NPROCS} $(filter-out $@,$(MAKECMDGOALS))
+	COVERAGE_PROCESS_START=setup.cfg coverage run --source creme/ creme/manage.py test --noinput --keepdb --parallel=${MAKE_NPROCS} $(filter-out $@,$(MAKECMDGOALS))
 	coverage combine
 	coverage report
 	coverage html
@@ -60,7 +80,7 @@ karma-ci:
 ## Run the application
 .PHONY: serve
 serve: media
-	python manage.py runserver
+	python creme/manage.py runserver
 
 
 ## Run the Javascript linters
