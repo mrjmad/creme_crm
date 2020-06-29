@@ -509,7 +509,7 @@ class BrickTestCase(CremeTestCase):
             defaults={'brick': self.TestBrick01.id_, 'zone': zone},
             data=[
                 {'model': FakeContact,      'order': order1},
-                {'model': FakeOrganisation, 'order': order1},
+                {'model': FakeOrganisation, 'order': order2},
             ],
         )
 
@@ -777,7 +777,7 @@ class BrickTestCase(CremeTestCase):
         )
 
         with self.assertRaises(ValueError):
-            __ = ibi.brick_id
+            ibi.brick_id  # NOQA
 
         # id_is_specific = InstanceBrickConfigItem.id_is_specific
         # self.assertFalse(id_is_specific(Brick.generate_id('creme_core', 'foobar')))

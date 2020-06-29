@@ -65,7 +65,7 @@ class ExportTestCase(_BillingTestCase):
         self.assertEqual(f'attachment; filename="{basename(fullpath)}"',
                          response['Content-Disposition']
                         )
-        __ = b''.join(response.streaming_content)  # Consume stream to avoid ResourceWarning
+        b''.join(response.streaming_content)  # Consume stream to avoid ResourceWarning
 
     @skipIfCustomQuote
     @skipIfCustomServiceLine
