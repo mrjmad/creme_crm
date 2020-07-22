@@ -79,10 +79,11 @@ def skipIfCustomServiceLine(test_func):
 
 class _BillingTestCaseMixin:
     def login(self, is_superuser=True, allowed_apps=None, *args, **kwargs):
-        return super().login(is_superuser,
-                             allowed_apps=allowed_apps or ['billing'],
-                             *args, **kwargs
-                             )
+        return super().login(
+            is_superuser,
+            allowed_apps=allowed_apps or ['billing'],
+            *args, **kwargs
+        )
 
     def assertAddressContentEqual(self, address1, address2):  # TODO: move in persons ??
         self.assertIsInstance(address1, Address)
@@ -270,10 +271,13 @@ class _BillingTestCaseMixin:
 
     def assertDeleteStatusOK(self, *, status2del, short_name, new_status, doc):
         response = self.client.post(
-            reverse('creme_config__delete_instance',
-                    args=('billing', short_name, status2del.id)
-                    ),
-            data={'replace_billing__{}_status'.format(type(doc).__name__.lower()): new_status.id},
+            reverse(
+                'creme_config__delete_instance',
+                args=('billing', short_name, status2del.id)
+            ),
+            data={
+                f'replace_billing__{type(doc).__name__.lower()}_status': new_status.id,
+            },
         )
         self.assertNoFormError(response)
 

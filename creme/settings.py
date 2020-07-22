@@ -1041,6 +1041,11 @@ QUOTE_NUMBER_PREFIX = 'DE'
 INVOICE_NUMBER_PREFIX = 'FA'
 SALESORDER_NUMBER_PREFIX = 'BC'
 
+BILLING_EXPORTERS = [
+    'creme.billing.exporters.xls.XLSExporter',
+    'creme.billing.exporters.latex.LatexExporter',
+]
+
 # OPPORTUNITIES ----------------------------------------------------------------
 OPPORTUNITIES_OPPORTUNITY_MODEL = 'opportunities.Opportunity'
 OPPORTUNITIES_OPPORTUNITY_FORCE_NOT_CUSTOM = False

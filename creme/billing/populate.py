@@ -21,6 +21,7 @@
 import logging
 
 from django.apps import apps
+from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import gettext as _
 from django.utils.translation import pgettext
 
@@ -51,6 +52,7 @@ from .core import BILLING_MODELS
 from .models import (
     AdditionalInformation,
     CreditNoteStatus,
+    ExporterConfigItem,
     InvoiceStatus,
     PaymentTerms,
     QuoteStatus,
@@ -295,6 +297,15 @@ class Populator(BasePopulator):
 
         create_hf_lines('billing-hg_product_lines', _('Product lines view'), ProductLine)
         create_hf_lines('billing-hg_service_lines', _('Service lines view'), ServiceLine)
+
+        # ---------------------------
+        get_ct = ContentType.objects.get_for_model
+
+        for model in (CreditNote, Invoice, Quote, SalesOrder, TemplateBase):
+            ExporterConfigItem.objects.get_or_create(
+                content_type=get_ct(model),
+                defaults={'exporter_id': ''},
+            )
 
         # ---------------------------
         for model in (Invoice, CreditNote, Quote, SalesOrder):
